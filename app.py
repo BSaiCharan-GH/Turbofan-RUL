@@ -22,6 +22,43 @@ st.write(
 )
 
 ROOT = Path(__file__).resolve().parent
+
+st.subheader("LSTM vs Transformer — Model Comparison")
+
+graph_path = ROOT / "models" / "final_evaluation_graph.png"
+
+if graph_path.exists():
+    st.image(
+        str(graph_path),
+        caption="Actual RUL vs LSTM and Transformer predictions",
+        use_container_width=True,
+    )
+else:
+    st.warning("The comparison graph is not available in the repository.")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    st.metric(
+        "LSTM Test RMSE",
+        "14.74 cycles",
+    )
+
+with col2:
+    st.metric(
+        "Transformer Test RMSE",
+        "14.59 cycles",
+        delta="-0.15 cycles",
+        delta_color="normal",
+    )
+
+st.caption(
+    "Lower RMSE indicates better prediction accuracy. "
+    "Reported values are from the project's README."
+)
+
+st.divider()
+
 FEATURES = ["setting_1", "setting_2", "setting_3"] + [
     f"s_{i}" for i in range(1, 22)
 ]
