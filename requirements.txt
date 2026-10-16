@@ -1,8 +1,6 @@
+streamlit
 torch
-torchvision
-torchaudio
 pandas
 numpy
-matplotlib
 scikit-learn
 joblib
